@@ -4,61 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="img/favicon-16x16.png" type="image/x-icon">
-    <title>Pedra,papel e tesoura</title>
+    <title>Pedra, Papel e Tesoura</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section>
-        <br>
-        <h1>PEDRA, PAPEL E TESOURA
-
-        </h1>
-        <button id="pedra" onclick="pedra()">
-            <img src="img/pedra.png" width="60px">
-        </button>
-        <button id="papel" onclick="papel()">
-            <img src="img/papel.png" width="63px">
-        </button>
-        <button id="tesoura" onclick="tesoura()">
-            <img src="img/tesoura.png" width="54px">
-        </button>
-        <h2 id="resultado">
-            Resultado
-        </h2>
-        <p1 id="resu">
-
-        </p1>
-        <p1 id="resu2">
-
-        </p1>
-        <br>
-        <br>
-        <br>
-        <p2>
-            <b>
-                Pontuação
-            </b>
-        </p2>
-        <br>
-        <br>
-        <br>
-        <p3>
-            <b>
-                Jogador
-            </b>
-        </p3>
-        <p3>
-            <b>
-                Computador
-            </b>
-        </p3>
-        <br>
-        <br>
-        <p4 id="jogador"></p4>
-        <p4 id="computador"></p4>
-    </section>
-
+    <main class="container">
+        <h1 style="font-size: 27pt;">Pedra, Papel e Tesoura</h1>
+        <div class="opcao">
+            <button class="pedra"><img src="./img/pedra.png" alt="pedra"></button>
+            <button class="papel"><img src="./img/papel.png" alt="papel"></button>
+            <button class="tesoura"><img src="./img/tesoura.png" alt="tesoura"></button>
+        </div>
+        <div class="escolhas">
+            <img class="escolhaJogador"></img>
+            <button class="containerSpan"> 
+                <span class="spanEsquerda"></span>
+                <span class="spanDireita"></span>
+            </button>
+            <img class="escolhaComputador"></img>
+        </div>
+        <h2>Pontuação</h2>
+        <div class="pontuacao">
+            <p class="jogador">Jogador</p>
+            <p class="computador">Computador</p>
+        </div>
+        <div class="pontos">
+            <p class="pontosJogador">0</p>
+            <p class="pontosComputador">0</p>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

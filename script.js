@@ -1,77 +1,100 @@
-var resultado = document.getElementById('resultado')
-var resu = document.getElementById('resu')
-var resu2 = document.getElementById('resu2')
-var jogador = document.getElementById('jogador')
-var computador = document.getElementById('computador')
-var joga = 0 
-var pc = 0 
+let pedra = document.querySelector(".pedra");
+let papel = document.querySelector(".papel");
+let tesoura = document.querySelector(".tesoura");
 
-function pedra(){
-    var aleatorio = Math.floor(Math.random()*3)
-    if(aleatorio==0){
-        resultado.innerHTML = 'Empate'
-        resultado.style.color = 'black'
-        resu.innerHTML = '<img src="img/pedradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/pedraesq.png" width="50px">'
-    } else if(aleatorio==1){
-        pc++
-        resultado.innerHTML='Você perdeu!'
-        resultado.style.color = 'red'
-        resu.innerHTML = '<img src="img/pedradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/papelesq.png" width="50px">'
-        computador.innerHTML = pc
-    } else{
-        joga++
-        resultado.innerHTML = 'Você ganhou!'
-        resultado.style.color = 'green'
-        resu.innerHTML = '<img src="img/pedradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/tesouraesq.png" width="50px">'
-        jogador.innerHTML = joga
-    }
+let escolhas = document.querySelector(".escolhas");
+let escolhaJogador = document.querySelector(".escolhaJogador");
+let escolhaComputador = document.querySelector(".escolhaComputador");
+
+let pontosJogador = document.querySelector(".pontosJogador");
+let pontosComputador = document.querySelector(".pontosComputador");
+var jogador = 0;
+var computador = 0;
+
+pedra.addEventListener("click", stone);
+papel.addEventListener("click", paper);
+tesoura.addEventListener("click", scissors);
+
+var numberAleatorio = 0;
+
+function aleatorio() {
+  numberAleatorio = Math.floor(Math.random() * 3);
 }
-function papel(){
-    var aleatorio = Math.floor(Math.random()*3)
-    if (aleatorio==0){
-        joga++
-        resultado.innerHTML = 'Você ganhou!'
-        resultado.style.color = 'green'
-        resu.innerHTML = '<img src="img/papeldire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/pedraesq.png" width="50px">'
-        jogador.innerHTML = joga
-    } else if(aleatorio==1){
-        resultado.innerHTML = 'Empate'
-        resultado.style.color = 'black'
-        resu.innerHTML = '<img src="img/papeldire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/papelesq.png" width="50px">'
-    } else{
-        pc++
-        resultado.innerHTML = 'Você perdeu!'
-        resultado.style.color = 'red'
-        resu.innerHTML = '<img src="img/papeldire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/tesouraesq.png" width="50px">'
-        computador.innerHTML = pc
-    }
+
+function ocupacao() {
+  escolhas.style.opacity = "0";
 }
-function tesoura(){
-    var aleatorio = Math.floor(Math.random()*3)
-    if(aleatorio==0){
-        pc++
-        resultado.innerHTML = 'Você perdeu!'
-        resultado.style.color='red'
-        resu.innerHTML = '<img src="img/tesouradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/pedraesq.png" width="50px">'
-        computador.innerHTML = pc;
-    } else if(aleatorio==1){
-        joga++
-        resultado.innerHTML = 'Você ganhou!'
-        resultado.style.color='green'
-        resu.innerHTML = '<img src="img/tesouradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/papelesq.png" width="50px">'
-        jogador.innerHTML = joga
-    } else{
-        resultado.innerHTML = 'Empate'
-        resultado.style.color='black'
-        resu.innerHTML = '<img src="img/tesouradire.png" width="50px">'
-        resu2.innerHTML = '<img src="img/tesouraesq.png" width="50px">'
-    }
+
+function stone() {
+  aleatorio();
+
+  if (numberAleatorio == 0) {
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/pedradire.png";
+    escolhaComputador.src = "./img/pedraesq.png";
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 1) {
+    computador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/pedradire.png";
+    escolhaComputador.src = "./img/papelesq.png";
+    pontosComputador.innerHTML = computador;
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 2) {
+    jogador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/pedradire.png";
+    escolhaComputador.src = "./img/tesouraesq.png";
+    pontosJogador.innerHTML = jogador;
+    setTimeout(ocupacao, 700);
+  }
+}
+
+function paper() {
+  aleatorio();
+
+  if (numberAleatorio == 0) {
+    jogador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/papeldire.png";
+    escolhaComputador.src = "./img/pedraesq.png";
+    pontosJogador.innerHTML = jogador;
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 1) {
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/papeldire.png";
+    escolhaComputador.src = "/img/papelesq.png";
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 2) {
+    computador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/papeldire.png";
+    escolhaComputador.src = "./img/tesouraesq.png";
+    pontosComputador.innerHTML = computador;
+    setTimeout(ocupacao, 700);
+  }
+}
+function scissors() {
+  aleatorio();
+
+  if (numberAleatorio == 0) {
+    computador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/tesouradire.png";
+    escolhaComputador.src = "./img/pedraesq.png";
+    pontosComputador.innerHTML = computador;
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 1) {
+    jogador++;
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/tesouradire.png";
+    escolhaComputador.src = "./img/papeldire.png";
+    pontosJogador.innerHTML = jogador;
+    setTimeout(ocupacao, 700);
+  } else if (numberAleatorio == 2) {
+    escolhas.style.opacity = "100%";
+    escolhaJogador.src = "./img/tesouradire.png";
+    escolhaComputador.src = "./img/tesouraesq.png";
+    setTimeout(ocupacao, 700);
+  }
 }
